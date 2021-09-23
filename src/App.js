@@ -4,7 +4,7 @@ import {useEffect} from "react";
 
 function App() {
 
-  /*useEffect(() => {
+  useEffect(() => {
     const mainButton = document.querySelector('main .burger-button-block');
     const asideButton = document.querySelector('aside .burger-button-block');
 
@@ -28,7 +28,7 @@ function App() {
       asideBlockToggleClass();
     });
 
-  });*/
+  });
 
   return (
     <div className="container">

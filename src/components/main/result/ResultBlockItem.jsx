@@ -4,6 +4,8 @@ import FillHeart from "../../icons/FillHeart";
 import Message from "../../icons/Message";
 
 export default function ResultBlockItem({id, category, value, lastUpdate, url, index, pushToFavourites, favourites}) {
+  const getMilliseconds = Date.parse(lastUpdate);
+  const getHours = Math.floor((getMilliseconds / 1000) / 3600);
   return (
     <li>
       <article className="result-block-item">
@@ -19,7 +21,7 @@ export default function ResultBlockItem({id, category, value, lastUpdate, url, i
             <div className="result-block_description">
               <p>{value}</p>
               <div className="footer">
-                <span>last update: {lastUpdate} hours update</span>
+                <span>last update: {getHours} hours update</span>
                 {category && <div className="tags">
                   <span className="tag">{category}</span>
                 </div>}

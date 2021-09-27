@@ -45,7 +45,7 @@ export  default function App() {
         .then(data => {
           let arr = [];
           arr.push(data);
-          setResult(arr)
+          setResult(arr);
         });
     } else if (queryCategory === 'search') {
 
@@ -53,7 +53,7 @@ export  default function App() {
       fetch(url)
         .then(data => data.json())
         .then(data => {
-          setResult(data.result)
+          setResult(data.result);
         });
     }
   }

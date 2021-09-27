@@ -77,7 +77,7 @@ input[type=radio] + label span {
 .container {
 	position: relative;
 	width: 100vw;
-	height: 100vh;
+	height: 1194px;
 	margin: auto;
 	display: flex;
 	flex-direction: row;
@@ -173,7 +173,7 @@ main ul.search-group ul.categories-group {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	margin: 20px 0;
+	margin: 20px 0 0;
 }
 main ul.search-group ul.categories-group li button.category-select-button {
 	text-transform: uppercase;
@@ -191,9 +191,6 @@ main ul.search-group ul.categories-group li button.category-select-button {
 }
 main ul.search-group ul.categories-group li button.category-select-button:first-of-type {
 	margin-bottom: 16px;
-}
-main ul.search-group li:last-of-type {
-	margin-bottom: 20px;
 }
 main ul.search-group ul.categories-group button.category-select-button__active {
 	background-color: var(--second-background-color) !important;
@@ -459,12 +456,6 @@ aside .favourite-block-item .favourite-block_description span {
 	margin-bottom: 10px;
 }
 /************************************************************/
-@media (min-width: 576px) {
-}
-@media (min-width: 768px) {
-}
-@media (min-width: 836px) {
-}
 @media (min-width: 992px) {
 	input[type=radio]:hover + label::before {
 		border-color: var(--main-font-color);
@@ -483,15 +474,6 @@ aside .favourite-block-item .favourite-block_description span {
 		padding: 40px 40px 0;
 		max-width: 480px;
 	}
-}
-@media (min-width: 1024px) {
-}
-@media screen and (min-width: 1200px) {
-	.container {
-		width: 1200px;
-	}
-}
-@media (min-width: 1400px) {
 }
 @media (min-width: 1440px) {
 	.container {
@@ -514,6 +496,4 @@ aside .favourite-block-item .favourite-block_description span {
 	aside .burger-button-block {
 		display: none;
 	}
-}
-@media (min-width: 1600px) {
 }

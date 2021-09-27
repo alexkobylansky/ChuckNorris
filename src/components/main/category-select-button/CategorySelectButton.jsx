@@ -1,11 +1,9 @@
 import React from "react";
 
-export default function CategorySelectButton(props) {
-  const {name, value, active, onClick} = props;
-
+export default function CategorySelectButton({name, value, active, onClick}) {
   return (
     <li>
-      <button type="button" className={'category-select-button' + (active ? ' category-select-button__active' : '')} value={value} onClick={e => {onClick(e.target.value)}}>{name}
+      <button type="button" className={'category-select-button' + (active ? ' category-select-button__active' : '')} value={value} onClick={event => {onClick(event.target.value)}}>{name}
       </button>
     </li>
   )

@@ -208,10 +208,10 @@ main button.joke-button {
 	padding: 10px 40px;
 	border-radius: 10px;
 	cursor: pointer;
+	box-shadow: 1px 2px 5px -1px #000000;
 	transition: all .1s linear;
 }
 main button.joke-button:hover {
-	box-shadow: 1px 2px 5px -1px #000000;
 	transition: all .1s linear;
 }
 main button.joke-button:active {

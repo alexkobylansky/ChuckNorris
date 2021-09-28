@@ -19,7 +19,7 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
       <header>
         <h1>MSI 2020</h1>
         <div className="favourite-open">
-          <div className="burger-button-block" onClick={toggleAsideState}><span></span></div>
+          <div className="burger-button-block" onClick={toggleAsideState}><span/></div>
           <h2>Favourite</h2>
         </div>
       </header>
@@ -71,7 +71,7 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
               <label htmlFor="search" data-for="search">
                 <span>Search</span>
               </label>
-              {queryCategory === 'search' && (<><input type="text" className="search-input" onClick={getQuery} onChange={event => setValue(event.target.value)}/></>)}
+              {queryCategory === 'search' && (<><input type="text" className="search-input" onClick={getQuery} onChange={event => setValue(event.target.value)} placeholder="Free text search..." /></>)}
             </li>
           </ul>
           <button type="button" onClick={getQuery} className="joke-button">Get a joke</button>

@@ -1,8 +1,8 @@
 import Main from "./components/main/Main";
 import Aside from "./components/aside/Aside";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
-export  default function App() {
+export default function App() {
 
   const [result, setResult] = useState([]);
   const [favourites, setFavourites] = useState((JSON.parse(localStorage.getItem("favourites"))) || []);
@@ -15,17 +15,18 @@ export  default function App() {
     const exist = favourites.find(i => i.id === id);
     if (exist) {
       return null
-    }
-    else {
+    } else {
       setFavourites(prev => [...prev, result[index]]);
-      localStorage.setItem("favourites", JSON.stringify(favourites));
     }
   }
 
   function removeFromFavourites(id) {
     setFavourites(prev => prev.filter(prev => prev.id !== id));
-    localStorage.setItem("favourites", JSON.stringify(favourites));
   }
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  },[favourites]);
 
   function getQuery() {
     let url = '';
@@ -76,7 +77,6 @@ export  default function App() {
         favourites={favourites}
         toggleAsideState={toggleAsideState}
         asideState={asideState}
-
       />
       <Aside
         favourites={favourites}

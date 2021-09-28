@@ -79,12 +79,12 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
       </div>
       <div className="result-block">
         <ul className="container-scroll">
-          {result && result.map((item, i) => <ResultBlockItem key={result[i].id}
-                                                              id={result[i].id}
-                                                              value={result[i].value}
-                                                              category={result[i].categories['0']}
-                                                              lastUpdate={result[i].updated_at}
-                                                              url={result[i].url}
+          {result && result.map((item, i) => <ResultBlockItem key={item.id}
+                                                              id={item.id}
+                                                              value={item.value}
+                                                              category={item.categories['0']}
+                                                              lastUpdate={item.updated_at}
+                                                              url={item.url}
                                                               index={i}
                                                               pushToFavourites={pushToFavourites}
                                                               favourites={favourites}

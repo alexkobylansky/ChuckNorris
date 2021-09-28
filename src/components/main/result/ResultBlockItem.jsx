@@ -4,12 +4,14 @@ import FillHeart from "../../icons/FillHeart";
 import Message from "../../icons/Message";
 
 export default function ResultBlockItem({id, category, value, lastUpdate, url, index, pushToFavourites, favourites}) {
+
   const getMilliseconds = Date.parse(lastUpdate);
   const getHours = Math.floor((getMilliseconds / 1000) / 3600);
+
   return (
     <li>
       <article className="result-block-item">
-      <span className="icon-heart-block" onClick={event => pushToFavourites(index, id)}>
+      <span className="icon-heart-block" onClick={() => pushToFavourites(index, id)}>
         {favourites.find(i => i.id === id) ? <FillHeart/> : <Heart/>}
       </span>
         <div className="result-block-item_container">

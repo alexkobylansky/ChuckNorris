@@ -5,16 +5,16 @@ export default function Aside({favourites, removeFromFavourites, toggleAsideStat
   return (
     <aside className={asideState ? 'open' : 'close'}>
       <header>
-        <div className="burger-button-block" onClick={toggleAsideState}><span></span></div>
+        <div className="burger-button-block" onClick={toggleAsideState}><span/></div>
         <h2>Favourite</h2>
       </header>
       <div className="favourites-block">
         <ul className="container-scroll">
-          {favourites && favourites.map((item, i)=> <FavouriteBlockItem key={favourites[i].id}
-                                                                        id={favourites[i].id}
-                                                                        value={favourites[i].value}
-                                                                        lastUpdate={favourites[i].updated_at}
-                                                                        url={favourites[i].url}
+          {favourites && favourites.map(item => <FavouriteBlockItem key={item.id}
+                                                                        id={item.id}
+                                                                        value={item.value}
+                                                                        lastUpdate={item.updated_at}
+                                                                        url={item.url}
                                                                         removeFromFavourites={removeFromFavourites}
                                                     />
           )}

@@ -3,12 +3,14 @@ import FillHeart from '../../icons/FillHeart'
 import Message from "../../icons/Message";
 
 export default function FavouriteBlockItem({url, value, id, lastUpdate, removeFromFavourites}) {
+
   const getMilliseconds = Date.parse(lastUpdate);
   const getHours = Math.floor((getMilliseconds / 1000) / 3600);
+
   return (
     <li>
       <article className="favourite-block-item">
-      <span className="icon-heart-block" onClick={event => removeFromFavourites(id)}>
+      <span className="icon-heart-block" onClick={() => removeFromFavourites(id)}>
         <FillHeart />
       </span>
         <div className="favourite-block-item_container">

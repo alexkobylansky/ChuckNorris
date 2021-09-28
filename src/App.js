@@ -1,11 +1,11 @@
 import Main from "./components/main/Main";
 import Aside from "./components/aside/Aside";
-import {useState} from "react";
+import React, {useState} from "react";
 
 export  default function App() {
 
   const [result, setResult] = useState([]);
-  const [favourites, setFavourites] = useState([...JSON.parse(localStorage.getItem("favourites"))] || []);
+  const [favourites, setFavourites] = useState((JSON.parse(localStorage.getItem("favourites"))) || []);
   const [queryCategory, setQueryCategory] = useState('');
   const [categoryButton, setCategoryButton] = useState('');
   const [value, setValue] = useState('Free text search...');

@@ -483,6 +483,7 @@ aside .favourite-block-item .favourite-block_description span {
 	}
 	main {
 		padding: 40px 140px 0;
+		max-width: calc(100% - 480px);
 	}
 	main header .favourite-open {
 		display: none;

@@ -4,8 +4,10 @@ import Message from "../../icons/Message";
 
 export default function FavouriteBlockItem({url, value, id, lastUpdate, removeFromFavourites}) {
 
-  const getMilliseconds = Date.parse(lastUpdate);
-  const getHours = Math.floor((getMilliseconds / 1000) / 3600);
+  function lastUpdated(lastUpdate) {
+    const getMilliseconds = Date.parse(lastUpdate);
+    return Math.floor((getMilliseconds / 1000) / 3600)
+  }
 
   return (
     <li>
@@ -25,7 +27,7 @@ export default function FavouriteBlockItem({url, value, id, lastUpdate, removeFr
                 {value}
               </p>
               <div className="footer">
-                <span>last update: {getHours} hours update</span>
+                <span>last update: {lastUpdated(lastUpdate)} hours update</span>
               </div>
             </div>
           </div>

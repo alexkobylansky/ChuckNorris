@@ -85,7 +85,7 @@ input[type=radio] + label span {
 }
 main {
 	position: relative;
-	max-width: 100%;
+	max-width: 960px;
 	width: 100%;
 	background-color: var(--main-background-color);
 	padding: 20px 20px 0;
@@ -473,6 +473,9 @@ aside .favourite-block-item .favourite-block_description span {
 	aside {
 		padding: 40px 40px 0;
 		max-width: 480px;
+	}
+	aside.close {
+		right: -480px;
 	}
 }
 @media (min-width: 1440px) {

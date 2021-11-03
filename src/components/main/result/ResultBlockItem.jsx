@@ -5,8 +5,10 @@ import Message from "../../icons/Message";
 
 export default function ResultBlockItem({id, category, value, lastUpdate, url, index, pushToFavourites, favourites}) {
 
-  const getMilliseconds = Date.parse(lastUpdate);
-  const getHours = Math.floor((getMilliseconds / 1000) / 3600);
+  function lastUpdated(lastUpdate) {
+    const getMilliseconds = Date.parse(lastUpdate);
+    return Math.floor((getMilliseconds / 1000) / 3600)
+  }
 
   return (
     <li>
@@ -23,7 +25,7 @@ export default function ResultBlockItem({id, category, value, lastUpdate, url, i
             <div className="result-block_description">
               <p>{value}</p>
               <div className="footer">
-                <span>last update: {getHours} hours update</span>
+                <span>last update: {lastUpdated(lastUpdate)} hours update</span>
                 {category && <div className="tags">
                   <span className="tag">{category}</span>
                 </div>}

@@ -14,6 +14,14 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
       });
   }, []);
 
+  function search(getQuery) {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        getQuery();
+      }
+    })
+  }
+
   return (
     <main className={asideState ? 'open' : 'close'}>
       <header>
@@ -71,7 +79,7 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
               <label htmlFor="search" data-for="search">
                 <span>Search</span>
               </label>
-              {queryCategory === 'search' && (<><input type="text" className="search-input" onClick={getQuery} onChange={event => setValue(event.target.value)} placeholder="Free text search..." /></>)}
+              {queryCategory === 'search' && (<><input type="text" className="search-input" onClick={search} onChange={event => setValue(event.target.value)} placeholder="Free text search..." /></>)}
             </li>
           </ul>
           <button type="button" onClick={getQuery} className="joke-button">Get a joke</button>

@@ -14,7 +14,7 @@ export default function App() {
   function pushToFavourites(index, id) {
     const exist = favourites.find(i => i.id === id);
     if (exist) {
-      return null
+      setFavourites(prev => prev.filter(prev => prev.id !== id));
     } else {
       setFavourites(prev => [...prev, result[index]]);
     }
@@ -26,34 +26,30 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
-  },[favourites]);
+  }, [favourites]);
 
   function getQuery() {
-    let url = '';
     if (queryCategory === 'random') {
-      url = 'https://api.chucknorris.io/jokes/random'
-      fetch(url)
+      fetch('https://api.chucknorris.io/jokes/random')
         .then(data => data.json())
         .then(data => {
-          let arr = [];
-          arr.push(data);
-          setResult(arr);
+          setResult([data]);
         });
     } else if (queryCategory === 'categories' && categoryButton) {
-      url = `https://api.chucknorris.io/jokes/random?category=${categoryButton}`
-      fetch(url)
+      fetch(`https://api.chucknorris.io/jokes/random?category=${categoryButton}`)
         .then(data => data.json())
         .then(data => {
-          let arr = [];
-          arr.push(data);
-          setResult(arr);
+          setResult([data]);
         });
     } else if (queryCategory === 'search') {
 
-      url = `https://api.chucknorris.io/jokes/search?query=${value}`
-      fetch(url)
+      fetch(`https://api.chucknorris.io/jokes/search?query=${value}`)
         .then(data => data.json())
         .then(data => {
+          /*if (data.result.length >100) {
+            let res = data.result.slice(0, 100);
+            setResult(res);
+          } else setResult(data.result);*/
           setResult(data.result);
         });
     }

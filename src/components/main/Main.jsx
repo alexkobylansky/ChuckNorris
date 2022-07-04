@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import CategorySelectButton from "./category-select-button/CategorySelectButton";
 import ResultBlockItem from "./result/ResultBlockItem";
 
 export default function Main({getQuery, pushToFavourites, categoryButton, queryCategory, setValue, setCategoryButton, setQueryCategory, result, favourites, toggleAsideState, asideState}) {
 
   const [category, setCategory] = useState([]);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     fetch('https://api.chucknorris.io/jokes/categories')
@@ -17,9 +18,9 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
   function search(getQuery) {
     document.addEventListener('keydown', (event) => {
       if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-        getQuery();
+        inputRef.current.focus()
       }
-    })
+    });
   }
 
   return (
@@ -63,9 +64,9 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
               <label htmlFor="categories" data-for="categories">
                 <span>From categories</span>
               </label>
-              {queryCategory === 'categories' && (<ul className="categories-group">
+              {queryCategory === 'categories' && <ul className="categories-group">
                 {category.map((item, i) => <CategorySelectButton key={i} active={categoryButton === item} onClick={setCategoryButton} name={item} value={item}/>)}
-              </ul>)}
+              </ul>}
             </li>
             <li>
               <input type="radio"
@@ -79,10 +80,10 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
               <label htmlFor="search" data-for="search">
                 <span>Search</span>
               </label>
-              {queryCategory === 'search' && (<><input type="text" className="search-input" onClick={search} onChange={event => setValue(event.target.value)} placeholder="Free text search..." /></>)}
+              {queryCategory === 'search' && <input type="text" className="search-input" onClick={search} onChange={event => setValue(event.target.value)} placeholder="Free text search..." />}
             </li>
           </ul>
-          <button type="button" onClick={getQuery} className="joke-button">Get a joke</button>
+          <button type="button" ref={inputRef} onClick={getQuery} className="joke-button">Get a joke</button>
         </form>
       </div>
       <div className="result-block">

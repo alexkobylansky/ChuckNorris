@@ -8,7 +8,7 @@ export default function App() {
   const [favourites, setFavourites] = useState((JSON.parse(localStorage.getItem("favourites"))) || []);
   const [queryCategory, setQueryCategory] = useState('');
   const [categoryButton, setCategoryButton] = useState('');
-  const [value, setValue] = useState('Free text search...');
+  const [value, setValue] = useState('');
   const [asideState, setAsideState] = useState(false);
 
   function pushToFavourites(index, id) {
@@ -46,8 +46,8 @@ export default function App() {
       fetch(`https://api.chucknorris.io/jokes/search?query=${value}`)
         .then(data => data.json())
         .then(data => {
-          /*if (data.result.length >100) {
-            let res = data.result.slice(0, 100);
+          /*if (data.result.length >10) {
+            let res = data.result.slice(0, 10);
             setResult(res);
           } else setResult(data.result);*/
           setResult(data.result);

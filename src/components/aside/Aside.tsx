@@ -1,7 +1,21 @@
 import React from "react";
-import FavouriteBlockItem from "./favourite-block/FavouriteBlockItem";
+import {FavouriteBlockItem} from "./favourite-block/FavouriteBlockItem";
 
-export default function Aside({favourites, removeFromFavourites, toggleAsideState, asideState}) {
+interface AsideProps {
+  favourites: any;
+  removeFromFavourites(id: string): void;
+  toggleAsideState(): void;
+  asideState: boolean
+}
+
+interface IObjectItem {
+  id: string;
+  value: string;
+  lastUpdate: string;
+  url: string
+}
+
+export const Aside: React.FC<AsideProps> = ({favourites, removeFromFavourites, toggleAsideState, asideState}) => {
   return (
     <aside className={asideState ? 'open' : 'close'}>
       <header>
@@ -10,10 +24,10 @@ export default function Aside({favourites, removeFromFavourites, toggleAsideStat
       </header>
       <div className="favourites-block">
         <ul className="container-scroll">
-          {favourites && favourites.map(item => <FavouriteBlockItem key={item.id}
+          {favourites && favourites.map((item: IObjectItem) => <FavouriteBlockItem key={item.id}
                                                                         id={item.id}
                                                                         value={item.value}
-                                                                        lastUpdate={item.updated_at}
+                                                                        lastUpdate={item.lastUpdate}
                                                                         url={item.url}
                                                                         removeFromFavourites={removeFromFavourites}
                                                     />

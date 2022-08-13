@@ -1,17 +1,18 @@
-import Main from "./components/main/Main";
-import Aside from "./components/aside/Aside";
 import React, {useEffect, useState} from "react";
+import {Main} from "./components/main/Main";
+import {Aside} from "./components/aside/Aside";
 
-export default function App() {
+export const App: React.FC = () => {
 
-  const [result, setResult] = useState([]);
-  const [favourites, setFavourites] = useState((JSON.parse(localStorage.getItem("favourites"))) || []);
-  const [queryCategory, setQueryCategory] = useState('');
-  const [categoryButton, setCategoryButton] = useState('');
-  const [value, setValue] = useState('');
-  const [asideState, setAsideState] = useState(false);
+  const [result, setResult] = useState<any[]>([]);
+  // @ts-ignore
+  const [favourites, setFavourites] = useState<any[]>(JSON.parse(localStorage.getItem("favourites")) || []);
+  const [queryCategory, setQueryCategory] = useState<string>('');
+  const [categoryButton, setCategoryButton] = useState<string>('');
+  const [value, setValue] = useState<string>('');
+  const [asideState, setAsideState] = useState<boolean>(false);
 
-  function pushToFavourites(index, id) {
+  function pushToFavourites(index: number, id: string): void {
     const exist = favourites.find(i => i.id === id);
     if (exist) {
       setFavourites(prev => prev.filter(prev => prev.id !== id));
@@ -20,42 +21,40 @@ export default function App() {
     }
   }
 
-  function removeFromFavourites(id) {
-    setFavourites(prev => prev.filter(prev => prev.id !== id));
+  function removeFromFavourites(id: string): void {
+    setFavourites(prev => prev.filter(item => item.id !== id));
   }
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
 
-  function getQuery() {
+  function getQuery(): void {
     if (queryCategory === 'random') {
       fetch('https://api.chucknorris.io/jokes/random')
         .then(data => data.json())
-        .then(data => {
+        .then((data: Object) => {
           setResult([data]);
         });
     } else if (queryCategory === 'categories' && categoryButton) {
       fetch(`https://api.chucknorris.io/jokes/random?category=${categoryButton}`)
         .then(data => data.json())
-        .then(data => {
+        .then((data: Object) => {
           setResult([data]);
         });
     } else if (queryCategory === 'search') {
-
       fetch(`https://api.chucknorris.io/jokes/search?query=${value}`)
         .then(data => data.json())
-        .then(data => {
-          /*if (data.result.length >10) {
-            let res = data.result.slice(0, 10);
-            setResult(res);
-          } else setResult(data.result);*/
-          setResult(data.result);
+        .then((data) => {
+          // setResult(data.result);
+          if (data.result.length >10) {
+            setResult(data.result.slice(0, 10));
+          } else setResult(data.result);
         });
     }
   }
 
-  function toggleAsideState() {
+  function toggleAsideState(): void {
     setAsideState(!asideState);
   }
 

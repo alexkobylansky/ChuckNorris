@@ -3,11 +3,22 @@ import Heart from "../../icons/Heart";
 import FillHeart from "../../icons/FillHeart";
 import Message from "../../icons/Message";
 
-export default function ResultBlockItem({id, category, value, lastUpdate, url, index, pushToFavourites, favourites}) {
+interface ResultBlockItemProps {
+  id: string;
+  category: string;
+  value: string;
+  lastUpdate: string;
+  url: string;
+  index: number;
+  pushToFavourites (index: number, id: string): void;
+  favourites: any[];
+}
 
-  function lastUpdated(lastUpdate) {
+export const ResultBlockItem: React.FC<ResultBlockItemProps> = ({id, category, value, lastUpdate, url, index, pushToFavourites, favourites}) => {
+
+  function lastUpdated(lastUpdate: string): number {
     const getMilliseconds = Date.parse(lastUpdate);
-    return Math.floor((getMilliseconds / 1000) / 3600)
+    return Math.floor((getMilliseconds / 1000) / 3600);
   }
 
   return (

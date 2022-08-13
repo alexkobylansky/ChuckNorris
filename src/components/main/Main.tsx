@@ -1,11 +1,33 @@
 import React, {useEffect, useState, useRef} from "react";
-import CategorySelectButton from "./category-select-button/CategorySelectButton";
-import ResultBlockItem from "./result/ResultBlockItem";
+import {CategorySelectButton} from "./category-select-button/CategorySelectButton";
+import {ResultBlockItem} from "./result/ResultBlockItem";
 
-export default function Main({getQuery, pushToFavourites, categoryButton, queryCategory, setValue, setCategoryButton, setQueryCategory, result, favourites, toggleAsideState, asideState}) {
+interface MainProps {
+  getQuery(): void;
+  pushToFavourites(     index: number,     id: string): void;
+  categoryButton: any;
+  queryCategory: any;
+  setValue: any;
+  setCategoryButton: React.Dispatch<React.SetStateAction<string>>;
+  setQueryCategory: any;
+  result: any;
+  favourites: any;
+  toggleAsideState: any;
+  asideState: any;
+}
+
+interface IResult {
+  id: string;
+  value: string;
+  categories?: any[];
+  updated_at: string;
+  url: string;
+}
+
+export const Main : React.FC<MainProps> = ({getQuery, pushToFavourites, categoryButton, queryCategory, setValue, setCategoryButton, setQueryCategory, result, favourites, toggleAsideState, asideState}) => {
 
   const [category, setCategory] = useState([]);
-  const inputRef = useRef(null);
+  const inputRef = useRef<any>();
 
   useEffect(() => {
     fetch('https://api.chucknorris.io/jokes/categories')
@@ -15,7 +37,7 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
       });
   }, []);
 
-  function search(getQuery) {
+  function search() {
     document.addEventListener('keydown', (event) => {
       if (event.code === 'Enter' || event.code === 'NumpadEnter') {
         inputRef.current.focus()
@@ -65,7 +87,7 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
                 <span>From categories</span>
               </label>
               {queryCategory === 'categories' && <ul className="categories-group">
-                {category.map((item, i) => <CategorySelectButton key={i} active={categoryButton === item} onClick={setCategoryButton} name={item} value={item}/>)}
+                {category.map((item, i) => <CategorySelectButton key={i} active={categoryButton === item} setCategoryButton={setCategoryButton} name={item} value={item}/>)}
               </ul>}
             </li>
             <li>
@@ -88,10 +110,10 @@ export default function Main({getQuery, pushToFavourites, categoryButton, queryC
       </div>
       <div className="result-block">
         <ul className="container-scroll">
-          {result && result.map((item, i) => <ResultBlockItem key={item.id}
+          {result && result.map((item: IResult, i: number) => <ResultBlockItem key={item.id}
                                                               id={item.id}
                                                               value={item.value}
-                                                              category={item.categories['0']}
+                                                              category={item.categories!['0']}
                                                               lastUpdate={item.updated_at}
                                                               url={item.url}
                                                               index={i}

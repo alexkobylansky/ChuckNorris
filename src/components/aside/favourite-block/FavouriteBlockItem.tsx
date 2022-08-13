@@ -2,9 +2,17 @@ import React from "react";
 import FillHeart from '../../icons/FillHeart'
 import Message from "../../icons/Message";
 
-export default function FavouriteBlockItem({url, value, id, lastUpdate, removeFromFavourites}) {
+interface FavouriteBlockItemProps {
+  url: string;
+  value: string;
+  id: string;
+  lastUpdate: string;
+  removeFromFavourites(id: string): void;
+}
 
-  function lastUpdated(lastUpdate) {
+export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, value, id, lastUpdate, removeFromFavourites}) => {
+
+  function lastUpdated(lastUpdate: string) {
     const getMilliseconds = Date.parse(lastUpdate);
     return Math.floor((getMilliseconds / 1000) / 3600)
   }

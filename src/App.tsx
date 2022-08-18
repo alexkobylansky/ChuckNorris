@@ -4,9 +4,15 @@ import {Aside} from "./components/aside/Aside";
 
 export const App: React.FC = () => {
 
+  const storage = (): any[] => {
+    const favourites: string | null = localStorage.getItem('favourites');
+    if (favourites) {
+      return JSON.parse(favourites);
+    } else return []
+  }
+
   const [result, setResult] = useState<any[]>([]);
-  // @ts-ignore
-  const [favourites, setFavourites] = useState<any[]>(JSON.parse(localStorage.getItem("favourites")) || []);
+  const [favourites, setFavourites] = useState<any[]>(storage);
   const [queryCategory, setQueryCategory] = useState<string>('');
   const [categoryButton, setCategoryButton] = useState<string>('');
   const [value, setValue] = useState<string>('');

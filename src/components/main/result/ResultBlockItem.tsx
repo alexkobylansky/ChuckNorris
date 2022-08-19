@@ -1,7 +1,7 @@
 import React from "react";
-import Heart from "../../icons/Heart";
-import FillHeart from "../../icons/FillHeart";
-import Message from "../../icons/Message";
+import {ReactComponent as Message} from '../../../assets/img/Message.svg'
+import {ReactComponent as Heart} from '../../../assets/img/Heart.svg'
+import {ReactComponent as FillHeart} from '../../../assets/img/FillHeart.svg'
 
 interface ResultBlockItemProps {
   id: string;

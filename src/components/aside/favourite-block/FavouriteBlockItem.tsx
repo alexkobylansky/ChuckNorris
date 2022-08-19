@@ -1,6 +1,6 @@
 import React from "react";
-import FillHeart from '../../icons/FillHeart'
-import Message from "../../icons/Message";
+import {ReactComponent as Message} from '../../../assets/img/Message.svg'
+import {ReactComponent as FillHeart} from '../../../assets/img/FillHeart.svg'
 
 interface FavouriteBlockItemProps {
   url: string;

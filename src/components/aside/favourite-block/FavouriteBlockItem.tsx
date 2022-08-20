@@ -2,14 +2,6 @@ import React from "react";
 import {ReactComponent as Message} from '../../../assets/img/Message.svg'
 import {ReactComponent as FillHeart} from '../../../assets/img/FillHeart.svg'
 
-interface FavouriteBlockItemProps {
-  url: string;
-  value: string;
-  id: string;
-  lastUpdate: string;
-  removeFromFavourites(id: string): void;
-}
-
 export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, value, id, lastUpdate, removeFromFavourites}) => {
 
   function lastUpdated(lastUpdate: string) {

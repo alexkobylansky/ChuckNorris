@@ -1,20 +1,6 @@
 import React from "react";
 import {FavouriteBlockItem} from "./favourite-block/FavouriteBlockItem";
 
-interface AsideProps {
-  favourites: any;
-  removeFromFavourites(id: string): void;
-  toggleAsideState(): void;
-  asideState: boolean
-}
-
-interface IObjectItem {
-  id: string;
-  value: string;
-  lastUpdate: string;
-  url: string
-}
-
 export const Aside: React.FC<AsideProps> = ({favourites, removeFromFavourites, toggleAsideState, asideState}) => {
   return (
     <aside className={asideState ? 'open' : 'close'}>

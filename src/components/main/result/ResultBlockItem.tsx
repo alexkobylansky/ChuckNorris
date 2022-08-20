@@ -3,17 +3,6 @@ import {ReactComponent as Message} from '../../../assets/img/Message.svg'
 import {ReactComponent as Heart} from '../../../assets/img/Heart.svg'
 import {ReactComponent as FillHeart} from '../../../assets/img/FillHeart.svg'
 
-interface ResultBlockItemProps {
-  id: string;
-  category: string;
-  value: string;
-  lastUpdate: string;
-  url: string;
-  index: number;
-  pushToFavourites (index: number, id: string): void;
-  favourites: any[];
-}
-
 export const ResultBlockItem: React.FC<ResultBlockItemProps> = ({id, category, value, lastUpdate, url, index, pushToFavourites, favourites}) => {
 
   function lastUpdated(lastUpdate: string): number {

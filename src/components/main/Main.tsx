@@ -2,30 +2,7 @@ import React, {useEffect, useState, useRef} from "react";
 import {CategorySelectButton} from "./category-select-button/CategorySelectButton";
 import {ResultBlockItem} from "./result/ResultBlockItem";
 
-interface MainProps {
-  getQuery(): void;
-  pushToFavourites(     index: number,     id: string): void;
-  categoryButton: any;
-  queryCategory: any;
-  setValue: any;
-  setCategoryButton: React.Dispatch<React.SetStateAction<string>>;
-  setQueryCategory: any;
-  result: any;
-  favourites: any;
-  toggleAsideState: any;
-  asideState: any;
-}
-
-interface IResult {
-  id: string;
-  value: string;
-  categories?: any[];
-  updated_at: string;
-  url: string;
-}
-
 export const Main : React.FC<MainProps> = ({getQuery, pushToFavourites, categoryButton, queryCategory, setValue, setCategoryButton, setQueryCategory, result, favourites, toggleAsideState, asideState}) => {
-
   const [category, setCategory] = useState([]);
   const inputRef = useRef<any>();
 

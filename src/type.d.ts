@@ -15,7 +15,7 @@ declare interface MainProps {
 declare interface IResult {
   id: string;
   value: string;
-  categories: string;
+  categories: string[];
   updated_at: string;
   url: string;
 }
@@ -29,7 +29,7 @@ declare interface CategorySelectButtonProps {
 
 declare interface ResultBlockItemProps {
   id: string;
-  category: string;
+  category: string[];
   value: string;
   lastUpdate: string;
   url: string;
@@ -41,7 +41,7 @@ declare interface ResultBlockItemProps {
 declare interface FavouriteBlockItemProps {
   url: string;
   value: string;
-  category: string;
+  category: string[];
   id: string;
   lastUpdate: string;
   removeFromFavourites(id: string): void;

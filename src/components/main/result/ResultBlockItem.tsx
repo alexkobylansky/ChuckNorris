@@ -26,9 +26,9 @@ export const ResultBlockItem: React.FC<ResultBlockItemProps> = ({id, category, v
               <p>{value}</p>
               <footer>
                 <span>last update: {lastUpdated(lastUpdate)} hours update</span>
-                {category && <div className="tags">
-                  <span className="tag">{category}</span>
-                </div>}
+                {category.length > 0 && category.map(item => <div className="tags" key={item}>
+                  <span className="tag">{item}</span>
+                </div>)}
               </footer>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React from "react";
 import {ReactComponent as Message} from '../../../assets/img/Message.svg'
 import {ReactComponent as FillHeart} from '../../../assets/img/FillHeart.svg'
 
-export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, value, id, lastUpdate, removeFromFavourites}) => {
+export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, value, category, id, lastUpdate, removeFromFavourites}) => {
 
   function lastUpdated(lastUpdate: string) {
     const getMilliseconds = Date.parse(lastUpdate);
@@ -26,9 +26,12 @@ export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, valu
               <p>
                 {value}
               </p>
-              <div className="footer">
+              <footer>
                 <span>last update: {lastUpdated(lastUpdate)} hours update</span>
-              </div>
+                {category && <div className="tags">
+                  <span className="tag">{category}</span>
+                </div>}
+              </footer>
             </div>
           </div>
         </div>

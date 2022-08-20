@@ -24,12 +24,12 @@ export const ResultBlockItem: React.FC<ResultBlockItemProps> = ({id, category, v
             <p className="result-block_id"><span>ID: </span><a href={url}>{id}</a></p>
             <div className="result-block_description">
               <p>{value}</p>
-              <div className="footer">
+              <footer>
                 <span>last update: {lastUpdated(lastUpdate)} hours update</span>
                 {category && <div className="tags">
                   <span className="tag">{category}</span>
                 </div>}
-              </div>
+              </footer>
             </div>
           </div>
         </div>

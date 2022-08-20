@@ -10,13 +10,14 @@ export const Aside: React.FC<AsideProps> = ({favourites, removeFromFavourites, t
       </header>
       <div className="favourites-block">
         <ul className="container-scroll">
-          {favourites && favourites.map((item: IObjectItem) => <FavouriteBlockItem key={item.id}
-                                                                        id={item.id}
-                                                                        value={item.value}
-                                                                        lastUpdate={item.lastUpdate}
-                                                                        url={item.url}
-                                                                        removeFromFavourites={removeFromFavourites}
-                                                    />
+          {favourites && favourites.map((item: IResult) => <FavouriteBlockItem key={item.id}
+                                                                               id={item.id}
+                                                                               value={item.value}
+                                                                               category={item.categories}
+                                                                               lastUpdate={item.updated_at}
+                                                                               url={item.url}
+                                                                               removeFromFavourites={removeFromFavourites}
+            />
           )}
         </ul>
       </div>

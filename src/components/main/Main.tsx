@@ -90,7 +90,7 @@ export const Main : React.FC<MainProps> = ({getQuery, pushToFavourites, category
           {result && result.map((item: IResult, i: number) => <ResultBlockItem key={item.id}
                                                               id={item.id}
                                                               value={item.value}
-                                                              category={item.categories!['0']}
+                                                              category={item.categories}
                                                               lastUpdate={item.updated_at}
                                                               url={item.url}
                                                               index={i}

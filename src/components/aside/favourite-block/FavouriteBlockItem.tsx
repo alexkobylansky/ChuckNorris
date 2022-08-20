@@ -1,16 +1,8 @@
 import React from "react";
-import FillHeart from '../../icons/FillHeart'
-import Message from "../../icons/Message";
+import {ReactComponent as Message} from '../../../assets/img/Message.svg'
+import {ReactComponent as FillHeart} from '../../../assets/img/FillHeart.svg'
 
-interface FavouriteBlockItemProps {
-  url: string;
-  value: string;
-  id: string;
-  lastUpdate: string;
-  removeFromFavourites(id: string): void;
-}
-
-export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, value, id, lastUpdate, removeFromFavourites}) => {
+export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, value, category, id, lastUpdate, removeFromFavourites}) => {
 
   function lastUpdated(lastUpdate: string) {
     const getMilliseconds = Date.parse(lastUpdate);
@@ -34,9 +26,12 @@ export const FavouriteBlockItem: React.FC<FavouriteBlockItemProps> = ({url, valu
               <p>
                 {value}
               </p>
-              <div className="footer">
+              <footer>
                 <span>last update: {lastUpdated(lastUpdate)} hours update</span>
-              </div>
+                {category.length > 0 && category.map(item => <div className="tags" key={item}>
+                  <span className="tag">{item}</span>
+                </div>)}
+              </footer>
             </div>
           </div>
         </div>

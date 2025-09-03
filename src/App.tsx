@@ -3,6 +3,12 @@ import {Main} from "./components/main/Main";
 import {Aside} from "./components/aside/Aside";
 
 export const App: React.FC = () => {
+  const [result, setResult] = useState<any[]>([]);
+  const [favourites, setFavourites] = useState<IResult[]>([]);
+  const [queryCategory, setQueryCategory] = useState<string>('');
+  const [categoryButton, setCategoryButton] = useState<string>('');
+  const [value, setValue] = useState<string>('');
+  const [asideState, setAsideState] = useState<boolean>(false);
 
   useEffect(() => {
     const data: string | null = localStorage.getItem('favourites');
@@ -10,13 +16,6 @@ export const App: React.FC = () => {
       setFavourites(JSON.parse(data))
     }
   }, []);
-
-  const [result, setResult] = useState<any[]>([]);
-  const [favourites, setFavourites] = useState<IResult[]>([]);
-  const [queryCategory, setQueryCategory] = useState<string>('');
-  const [categoryButton, setCategoryButton] = useState<string>('');
-  const [value, setValue] = useState<string>('');
-  const [asideState, setAsideState] = useState<boolean>(false);
 
   function pushToFavourites(index: number, id: string): void {
     const exist = favourites.find(i => i.id === id);
